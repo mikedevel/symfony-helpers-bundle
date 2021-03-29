@@ -4,6 +4,21 @@ MikedevsHelpersBundle
 This bundle help you to increase application version.
 
 ### Setup
+Add to composer.json
+
+```
+"repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:mikedevel/symfony-helpers-bundle.git"
+        },
+        ...
+    ],
+```
+Then
+
+```composer require --dev mikedevelper/symfony-helpers-bundle```
+
 Add file ```config/services.yaml```
 
 and put 
