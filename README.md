@@ -19,7 +19,7 @@ Then
 
 ```composer require --dev mikedevelper/symfony-helpers-bundle```
 
-Add file ```config/services.yaml```
+Add file ```config/dev/mikedevs_helpers.yaml```
 
 and put 
 
