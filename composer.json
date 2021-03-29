@@ -1,5 +1,5 @@
 {
-    "name": "mikedevelper/version-updater-bundle",
+    "name": "mikedevelper/symfony-helpers-bundle",
     "type": "symfony-bundle",
     "description": "Simple user provider for Symfony",
     "license": "LGPL-3.0-or-later",
