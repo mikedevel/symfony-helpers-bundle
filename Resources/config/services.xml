@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Mikedevs\VersionerBundle\Manager\UpdaterManager" class="Mikedevs\VersionerBundle\Manager\UpdaterManager" public="false">
+            <argument>%mkdev_versioner.yml_path%</argument>
+            <argument>%mkdev_versioner.property_name%</argument>
+        </service>
+        <service id="mkdev_versioner.manager" alias="Mikedevs\VersionerBundle\Manager\UpdaterManager"/>
+        <service id="Mikedevs\VersionerBundle\Manager\UpdaterManagerInterface" alias="Mikedevs\VersionerBundle\Manager\UpdaterManager" />
+    </services>
+
+</container>
