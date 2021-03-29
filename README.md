@@ -1,4 +1,4 @@
-MikedevsVersionerBundle
+MikedevsHelpersBundle
 ================
 
 This bundle help you to increase application version.

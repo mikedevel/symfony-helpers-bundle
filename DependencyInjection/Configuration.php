@@ -1,9 +1,9 @@
 <?php
 
-namespace Mikedevs\VersionerBundle\DependencyInjection;
+namespace Mikedevs\HelpersBundle\DependencyInjection;
 
-use Mikedevs\VersionerBundle\Form\Type\PasswordType;
-use Mikedevs\VersionerBundle\Form\Type\UserType;
+use Mikedevs\HelpersBundle\Form\Type\PasswordType;
+use Mikedevs\HelpersBundle\Form\Type\UserType;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -16,22 +16,22 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('mkdev_versioner');
+        $treeBuilder = new TreeBuilder('mikedevs_helper');
         // Keep compatibility with symfony/config < 4.2
         if (\method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
-            $rootNode = $treeBuilder->root('mkdev_versioner');
+            $rootNode = $treeBuilder->root('mikedevs_helper');
         }
 
         $rootNode
             ->children()
-            ->scalarNode('yml_path')
-            ->isRequired()
-            ->end()
-            ->scalarNode('property_name')
-            ->isRequired()
-            ->end()
+                ->scalarNode('yml_path')
+                ->isRequired()
+                ->end()
+                ->scalarNode('property_name')
+                ->isRequired()
+                ->end()
             ->end();
 
         return $treeBuilder;

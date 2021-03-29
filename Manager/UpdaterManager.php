@@ -1,6 +1,6 @@
 <?php
 
-namespace Mikedevs\VersionerBundle\Manager;
+namespace Mikedevs\HelpersBundle\Manager;
 
 class UpdaterManager implements UpdaterManagerInterface
 {

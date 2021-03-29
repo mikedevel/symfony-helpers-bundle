@@ -1,8 +1,8 @@
 <?php
 
-namespace Mikedevs\VersionerBundle\Command;
+namespace Mikedevs\HelpersBundle\Command;
 
-use Mikedevs\VersionerBundle\Manager\UpdaterManagerInterface;
+use Mikedevs\HelpersBundle\Manager\UpdaterManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

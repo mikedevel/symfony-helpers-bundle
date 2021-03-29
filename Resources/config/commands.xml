@@ -4,9 +4,9 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="Mikedevs\VersionerBundle\Command\UpgradeVersionCommand">
+        <service id="Mikedevs\HelpersBundle\Command\UpgradeVersionCommand">
             <tag name="console.command" command="mikedevs:version:upgrade"/>
-            <argument type="service" id="Mikedevs\VersionerBundle\Manager\UpdaterManager"/>
+            <argument type="service" id="Mikedevs\HelpersBundle\Manager\UpdaterManager"/>
         </service>
     </services>
 </container>
