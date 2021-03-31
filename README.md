@@ -7,31 +7,36 @@ This bundle help you to increase application version.
 
 Install with
 ```composer require --dev mikedevelper/symfony-helpers-bundle```
+and add configuration file
 
-Add file ```config/dev/mikedevs_helpers.yaml```
-
-and put 
 ```
+# config/dev/mikedevs_helpers.yaml
 mikedevs_helpers:
-   yml_path: "config/services.yaml" #path to file witch hold release version
-   property_name: "version" #release property name
+   yml_path: "config/services.yaml"
+   property_name: "version" 
 ```
 
+```
+yml_path > is path to file witch hold release version
+property_name > release property name
+```
 
-### Usage
-
-For example in your service.yaml you have
+Example of your config/services.yaml. Double quotes are required
 ```
 parameters:
     version: "1.0.0"
 ```
 
-Run 
-```bin/console mikedevs:version:upgrade```
-
-and your file will change into 1.0.1 and so on
+### Available commands
 
 ```
-parameters:
-    version: "1.0.1"
+#update patch version: es 1.0.0 => 1.0.1 (patch is default)
+bin/console mikedevs:version:upgrade
+bin/console mikedevs:version:upgrade patch
+
+#minor #update minor version: es 1.2.16 => 1.3.0
+bin/console mikedevs:version:upgrade minor
+
+#major #update major version: es 1.2.16 => 2.0.0
+bin/console mikedevs:version:upgrade mayor
 ```
