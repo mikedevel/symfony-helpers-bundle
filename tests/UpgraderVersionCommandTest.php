@@ -39,6 +39,15 @@ class UpgraderVersionCommandTest extends AbstractBaseCommandTestCase
         $this->assertStringContainsString('Version updated: 1.1.1 -> 2.0.0', $output);
     }
 
+    /**
+     * @sse UpgradeVersionCommand::execute()
+     */
+    public function testFakeParam()
+    {
+        $output = $this->execute("mikedevs:version:upgrade", ['whoupgrade' => "FAKEPARAM"]);
+        $this->assertStringContainsString('Version updated: 1.0.0 -> 1.0.1', $output);
+    }
+
     protected function tearDown(): void
     {
         parent::tearDown();
