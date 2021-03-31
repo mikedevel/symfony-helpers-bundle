@@ -22,7 +22,7 @@ class UpdaterManager implements UpdaterManagerInterface
         $this->property = $property;
     }
 
-    public function buildVersion(): string
+    public function buildVersion($type = ""): string
     {
         $file = $this->path;
         $homepage = file_get_contents($file);
@@ -33,8 +33,8 @@ class UpdaterManager implements UpdaterManagerInterface
         $p2 = (int)$version[1];
         $p3 = (int)$version[2];
 
-        $p3 = $p3 + 1;
-        if ($p3 == 100) {
+        $p3 = $this->incFix($p3);
+        if ($p3 == 0) {
             $p3 = 0;
             $p2 = $p2 + 1;
             if ($p2 == 10) {
@@ -44,7 +44,12 @@ class UpdaterManager implements UpdaterManagerInterface
         }
         $ver = "{$p1}.{$p2}.{$p3}";
         shell_exec('sed -i \'s/' . $this->property . ': ".*"/' . $this->property . '\: "' . $ver . '"/g\' ' . $file);
-        return "\033[32m Version updated: {$old} -> {$ver}\033[0m\r\n";
+        return "Version updated: {$old} -> {$ver}";
+    }
+
+    private function incFix($v) {
+        $v++;
+        return $v === 100 ? 0 : $v;
     }
 }
 

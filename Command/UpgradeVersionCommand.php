@@ -40,6 +40,6 @@ class UpgradeVersionCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln($this->manager->buildVersion());
+        $output->writeln("\033[0m{$this->manager->buildVersion()}\033[0m");
     }
 }
