@@ -7,6 +7,7 @@ class UpdaterManager implements UpdaterManagerInterface
 
     const MAJOR = "major";
     const MINOR = "minor";
+    const PATCH = "patch";
 
     /** @var string */
     private $path;
@@ -37,7 +38,7 @@ class UpdaterManager implements UpdaterManagerInterface
         $this->property = $property;
     }
 
-    public function buildVersion($type = "PATCH"): string
+    public function buildVersion($type = self::PATCH): string
     {
         $configContent = file_get_contents($this->path);
         preg_match("#{$this->property}: \"(.*)\"#i", $configContent, $m);

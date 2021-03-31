@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class UpdaterServiceTest extends TestCase
 {
-    protected const PATH = __DIR__ . "/../Tests/service-for-test.yml";
+    protected const PATH = __DIR__ . "/../tests/service-for-test.yml";
     protected const NAME = "version";
 
     /**
@@ -44,5 +44,12 @@ class UpdaterServiceTest extends TestCase
     private function setVersionTo($version = "1.0.0") {
         $this->service->setVersion($version);
     }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->setVersionTo("1.0.0");
+    }
+
 
 }

@@ -13,9 +13,19 @@
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <file>src/Kernel.php</file>
+                <directory>src/DependencyInjection</directory>
+            </exclude>
+        </whitelist>
+    </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
+        <env name="KERNEL_CLASS" value="Mikedevs\HelpersBundle\Kernel"/>
     </php>
 </phpunit>

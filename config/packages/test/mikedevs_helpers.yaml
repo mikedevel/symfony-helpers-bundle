@@ -1,0 +1,3 @@
+mikedevs_helpers:
+   yml_path: "%kernel.project_dir%/tests/service-for-test.yml"
+   property_name: "version"
