@@ -22,27 +22,27 @@ class UpdaterServiceTest extends TestCase
         $this->service = new UpdaterManager(self::PATH, self::NAME);
     }
 
-    public function testVersion()
+    public function testPatch()
     {
+        $this->setVersionTo("1.0.0");
         $out = $this->service->buildVersion();
         $this->assertEquals("Version updated: 1.0.0 -> 1.0.1", $out);
     }
 
-    public function testMaxFix() {
-        $this->setVersionTo("1.0.99");
-        $out = $this->service->buildVersion();
-        $this->assertEquals("Version updated: 1.0.99 -> 1.1.0", $out);
+    public function testMinor() {
+        $this->setVersionTo("1.0.19");
+        $out = $this->service->buildVersion(UpdaterManager::MINOR);
+        $this->assertEquals("Version updated: 1.0.19 -> 1.1.0", $out);
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        $this->setVersionTo();
+    public function testMajor() {
+        $this->setVersionTo("1.2.18");
+        $out = $this->service->buildVersion(UpdaterManager::MAJOR);
+        $this->assertEquals("Version updated: 1.2.18 -> 2.0.0", $out);
     }
 
     private function setVersionTo($version = "1.0.0") {
-
-        shell_exec('sed -i \'s/' . self::NAME . ': ".*"/' . self::NAME . '\: "'.$version.'"/g\' ' . self::PATH);
+        $this->service->setVersion($version);
     }
 
 }

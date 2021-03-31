@@ -21,16 +21,12 @@
         "phpunit/phpunit": "^7.5 || ^8.5 || ^9.1",
         "symfony/phpunit-bridge": "^5.2"
     },
-    "suggest": {
-        "knplabs/knp-paginator-bundle": "Needed for optional pagination",
-        "lexik/form-filter-bundle": "If you want to use filters"
-    },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.6.x-dev"
+            "dev-master": "1.0.x-dev"
         }
     },
     "autoload": {
