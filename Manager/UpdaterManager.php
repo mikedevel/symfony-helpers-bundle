@@ -5,11 +5,26 @@ namespace Mikedevs\HelpersBundle\Manager;
 class UpdaterManager implements UpdaterManagerInterface
 {
 
+    const MAJOR = "major";
+    const MINOR = "minor";
+
     /** @var string */
     private $path;
 
     /** @var string */
     private $property;
+    /**
+     * @var int
+     */
+    private $major;
+    /**
+     * @var int
+     */
+    private $minor;
+    /**
+     * @var int
+     */
+    private $patch;
 
     /**
      * UpdaterManager constructor.
@@ -22,30 +37,56 @@ class UpdaterManager implements UpdaterManagerInterface
         $this->property = $property;
     }
 
-    public function buildVersion(): string
+    public function buildVersion($type = "PATCH"): string
     {
-        $file = $this->path;
-        $homepage = file_get_contents($file);
-        preg_match("#{$this->property}: \"(.*)\"#i", $homepage, $m);
-        $old = $m[1];
+        $configContent = file_get_contents($this->path);
+        preg_match("#{$this->property}: \"(.*)\"#i", $configContent, $m);
+        $oldVersion = $m[1];
         $version = explode(".", $m[1]);
-        $p1 = (int)$version[0];
-        $p2 = (int)$version[1];
-        $p3 = (int)$version[2];
+        $this->major = (int)$version[0];
+        $this->minor = (int)$version[1];
+        $this->patch = (int)$version[2];
 
-        $p3 = $p3 + 1;
-        if ($p3 == 100) {
-            $p3 = 0;
-            $p2 = $p2 + 1;
-            if ($p2 == 10) {
-                $p2 = 0;
-                $p1 = $p1 + 1;
-            }
+        switch ($type) {
+            case self::MAJOR:
+                $this->major();
+                break;
+            case self::MINOR:
+                $this->minor();
+                break;
+            default:
+                $this->patch();
+                break;
         }
-        $ver = "{$p1}.{$p2}.{$p3}";
-        shell_exec('sed -i \'s/' . $this->property . ': ".*"/' . $this->property . '\: "' . $ver . '"/g\' ' . $file);
-        return "\033[32m Version updated: {$old} -> {$ver}\033[0m\r\n";
+
+        $newVersion = "{$this->major}.{$this->minor}.{$this->patch}";
+        $this->setVersion($newVersion);
+        return "Version updated: {$oldVersion} -> {$newVersion}";
     }
+
+    public function setVersion($newVersion) {
+        $cmd = 'sed -i \'s/{PROP}: ".*"/{PROP}\: "{VER}"/g\' {FILE}';
+        shell_exec(str_replace(['{PROP}', '{VER}', "{FILE}"], [$this->property, $newVersion, $this->path], $cmd));
+    }
+
+    private function patch()
+    {
+        $this->patch++;
+    }
+
+    private function minor()
+    {
+        $this->minor++;
+        $this->patch = 0;
+    }
+
+    private function major()
+    {
+        $this->major++;
+        $this->minor = 0;
+        $this->patch = 0;
+    }
+
 }
 
 
