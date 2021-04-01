@@ -12,8 +12,9 @@ and add configuration file
 ```
 # config/dev/mikedevs_helpers.yaml
 mikedevs_helpers:
-   yml_path: "config/services.yaml"
-   property_name: "version" 
+   versioner:
+       yml_path: "config/services.yaml"
+       property_name: "version" 
 ```
 
 ```

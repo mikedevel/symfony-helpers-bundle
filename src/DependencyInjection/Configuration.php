@@ -26,11 +26,11 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('yml_path')
-                ->isRequired()
-                ->end()
-                ->scalarNode('property_name')
-                ->isRequired()
+                ->arrayNode('versioner')
+                    ->children()
+                        ->scalarNode('yml_path') ->isRequired() ->end()
+                        ->scalarNode('property_name') ->isRequired() ->end()
+                    ->end()
                 ->end()
             ->end();
 

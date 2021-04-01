@@ -19,8 +19,8 @@ class MikedevsHelpersExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('mikedevs_helper.yml_path', $config['yml_path']);
-        $container->setParameter('mikedevs_helper.property_name', $config['property_name']);
+        $container->setParameter('mikedevs_helper.versioner.yml_path', $config['versioner']['yml_path']);
+        $container->setParameter('mikedevs_helper.versioner.property_name', $config['versioner']['property_name']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

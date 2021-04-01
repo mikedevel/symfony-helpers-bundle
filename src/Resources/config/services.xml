@@ -6,8 +6,8 @@
 
     <services>
         <service id="Mikedevs\HelpersBundle\Manager\UpdaterManager" class="Mikedevs\HelpersBundle\Manager\UpdaterManager" public="false">
-            <argument>%mikedevs_helper.yml_path%</argument>
-            <argument>%mikedevs_helper.property_name%</argument>
+            <argument>%mikedevs_helper.versioner.yml_path%</argument>
+            <argument>%mikedevs_helper.versioner.property_name%</argument>
         </service>
         <service id="mikedevs_helper.manager" alias="Mikedevs\HelpersBundle\Manager\UpdaterManager"/>
         <service id="Mikedevs\HelpersBundle\Manager\UpdaterManagerInterface" alias="Mikedevs\HelpersBundle\Manager\UpdaterManager" />
