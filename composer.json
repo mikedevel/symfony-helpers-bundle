@@ -2,7 +2,7 @@
     "name": "mikedevelper/symfony-helpers-bundle",
     "type": "symfony-bundle",
     "description": "Easy utilities for Symfony",
-    "license": "LGPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Michelangelo Lacatena",
